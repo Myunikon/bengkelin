@@ -82,11 +82,21 @@ include '../includes/sidebar.php';
         <a href="?status=<?= urlencode($filterStatus) ?>" class="btn btn-sm <?= !$filterStatus ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
             Semua <span class="badge bg-secondary text-white ms-1"><?= array_sum($counts) ?></span>
         </a>
-        <?php foreach ($validStatus as $st): ?>
-            <?php $countValue = $counts[$st] ?? 0; ?>
+        <?php 
+        $badgeStyles = [
+            'antre'      => 'background-color: rgba(245, 158, 11, 0.15); color: #b45309; border: 1px solid rgba(245, 158, 11, 0.3);',
+            'dikerjakan' => 'background-color: rgba(59, 130, 246, 0.15); color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.3);',
+            'selesai'    => 'background-color: rgba(16, 185, 129, 0.15); color: #15803d; border: 1px solid rgba(16, 185, 129, 0.3);',
+            'diambil'    => 'background-color: rgba(168, 85, 247, 0.15); color: #7e22ce; border: 1px solid rgba(168, 85, 247, 0.3);',
+            'dibatalkan' => 'background-color: rgba(239, 68, 68, 0.15); color: #b91c1c; border: 1px solid rgba(239, 68, 68, 0.3);',
+        ];
+        foreach ($validStatus as $st): 
+            $countValue = $counts[$st] ?? 0; 
+            $styleAttr = $badgeStyles[$st] ?? '';
+        ?>
             <a href="?status=<?= $st ?><?= $search ? '&search=' . urlencode($search) : '' ?>" class="btn btn-sm <?= $filterStatus === $st ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
-                <?= statusLabel($st) ?>
-                <span class="badge badge-<?= $st ?> ms-1"><?= $countValue ?></span>
+                <?= ucfirst($st) ?>
+                <span class="badge ms-1" style="<?= $styleAttr ?>"><?= $countValue ?></span>
             </a>
         <?php endforeach; ?>
     </div>
