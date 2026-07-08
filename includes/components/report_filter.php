@@ -40,9 +40,14 @@
             </div>
 
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary px-4 py-2 rounded-3 fw-medium">
-                    <i class="bx bx-filter-alt me-1"></i> Filter
-                </button>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary px-4 py-2 rounded-3 fw-medium">
+                        <i class="bx bx-filter-alt me-1"></i> Filter
+                    </button>
+                    <a href="?" class="btn btn-outline-secondary px-3 py-2 rounded-3 fw-medium" title="Reset Filter">
+                        <i class="bx bx-refresh me-1"></i> Reset
+                    </a>
+                </div>
             </div>
         </form>
     </div>
