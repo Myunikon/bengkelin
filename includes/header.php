@@ -65,16 +65,16 @@
             <?php endif; ?>
 
             <!-- User info -->
-            <div class="d-flex align-items-center bg-light rounded-pill px-3 py-1">
-                <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width:30px;height:30px;font-size:0.7rem;font-weight:700;">
+            <div class="d-flex align-items-center bg-light rounded-pill p-1 pe-2 pe-sm-3">
+                <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-1 me-sm-2" style="width:30px;height:30px;font-size:0.7rem;font-weight:700;">
                     <?php echo strtoupper(substr($_SESSION['username'] ?? 'A', 0, 1)); ?>
                 </span>
-                <span class="small fw-medium"><?php echo e($_SESSION['username'] ?? 'Admin'); ?></span>
+                <span class="small fw-medium d-none d-sm-inline"><?php echo e($_SESSION['username'] ?? 'Admin'); ?></span>
             </div>
 
             <!-- Logout -->
-            <a href="<?php echo BASE_URL; ?>logout.php" class="btn btn-outline-danger btn-sm">
-                <i class="bx bx-log-out me-1"></i> Logout
+            <a href="<?php echo BASE_URL; ?>logout.php" class="btn btn-outline-danger btn-sm px-2 px-sm-3">
+                <i class="bx bx-log-out"></i><span class="d-none d-sm-inline ms-1">Logout</span>
             </a>
         </div>
 
