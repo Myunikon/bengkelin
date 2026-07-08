@@ -52,6 +52,12 @@ $(function () {
 
     // Aksi saat tombol toggle diklik
     $('#sidebar-toggle').on('click', function () {
+        // Jika sedang di mobile view, tombol ini bertindak untuk menutup menu sliding
+        if (window.innerWidth <= 768) {
+            $('#sidebar').removeClass('mobile-open');
+            return;
+        }
+
         var isNowCollapsed = $('#sidebar').toggleClass('collapsed').hasClass('collapsed');
 
         $('#main-content').toggleClass('expanded', isNowCollapsed);
