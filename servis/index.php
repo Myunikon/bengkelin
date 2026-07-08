@@ -78,7 +78,6 @@ include '../includes/sidebar.php';
 <?php endif; ?>
 
 <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
-    <!-- Filter Status -->
     <div class="d-flex flex-wrap gap-2">
         <a href="?status=<?= urlencode($filterStatus) ?>" class="btn btn-sm <?= !$filterStatus ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
             Semua <span class="badge bg-secondary text-white ms-1"><?= array_sum($counts) ?></span>
@@ -92,7 +91,6 @@ include '../includes/sidebar.php';
         <?php endforeach; ?>
     </div>
 
-    <!-- Search Box -->
     <form action="" method="GET" class="d-flex ms-auto">
         <?php if ($filterStatus): ?><input type="hidden" name="status" value="<?= e($filterStatus) ?>"><?php endif; ?>
         <div class="input-group input-group-sm">

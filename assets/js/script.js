@@ -4,19 +4,13 @@
  */
 $(function () {
 
-    /* =========================================================
-       1. INISIALISASI TOOLTIP BOOTSTRAP
-       ========================================================= */
-    // Inisialisasi semua tooltip di awal
     var $sidebarTooltips = $('#sidebar [data-bs-toggle="tooltip"]');
     $sidebarTooltips.tooltip({
         placement: 'right',
         trigger: 'hover'
     });
 
-    /* =========================================================
-       2. SIDEBAR TOGGLE & TOOLTIP LOGIC
-       ========================================================= */
+
     var SIDEBAR_KEY = "sidebar_state";
 
     function getSidebarState() {
@@ -88,26 +82,19 @@ $(function () {
         }
     });
 
-    /* =========================================================
-       3. AUTO-DISMISS ALERTS
-       ========================================================= */
+
     setTimeout(function () {
         $(".alert-auto").fadeOut(500, function () {
             $(this).remove();
         });
     }, 4000);
 
-    /* =========================================================
-       4. KONFIRMASI HAPUS / AKSI BERBAHAYA
-       ========================================================= */
+
     $(document).on("click", ".btn-confirm", function (e) {
         const msg = $(this).data("confirm") || "Apakah Anda yakin ingin melakukan aksi ini?";
         if (!confirm(msg)) e.preventDefault();
     });
 
-    /* =========================================================
-       5. FORM: TAHUN KENDARAAN (1980 – tahun sekarang)
-       ========================================================= */
     const YEAR_NOW = new Date().getFullYear();
     $("#tahun").on("input blur", function () {
         const v = parseInt($(this).val(), 10);
@@ -121,10 +108,6 @@ $(function () {
         }
     });
 
-    /* =========================================================
-       6. FORM: TANGGAL MASUK (tidak boleh masa lalu)
-       ========================================================= */
-    /* Tanggal masuk: biarkan kosong (admin bebas memilih tanggal lalu s/d +7 hari ke depan) */
     const $tgl = $("#tanggal_masuk");
     if ($tgl.length) {
         // Set max = 7 hari ke depan
@@ -133,10 +116,6 @@ $(function () {
         $tgl.attr("max", maxDate.toISOString().split("T")[0]);
     }
 
-    /* =========================================================
-       7. FORM SERVIS: DYNAMIC SPAREPART ROWS (AJAX)
-       ========================================================= */
-    // Tambah baris sparepart via AJAX
     $(document).on("click", "#btn-add-sparepart", function () {
         const id_servis = $(this).data("id-servis");
         const id_sp = $("#sp-select").val();
@@ -247,9 +226,6 @@ $(function () {
         $("#total-sparepart").text(rupiah(total));
     }
 
-    /* =========================================================
-       8. PHOTO LIGHTBOX (MODAL BOOTSTRAP)
-       ========================================================= */
     $(document).on("click", ".photo-item img, .photo-item", function (e) {
         const src = $(this).is("img") ? $(this).attr("src") : $(this).find("img").attr("src");
         if (src) {
@@ -259,9 +235,7 @@ $(function () {
         }
     });
 
-    /* =========================================================
-       9. FILE INPUT CUSTOM (VALIDASI CLIENT SIDE)
-       ========================================================= */
+
     $("#foto-input").on("change", function () {
         const files = this.files;
         const MAX_MB = 2;
@@ -286,9 +260,6 @@ $(function () {
         }
     });
 
-    /* =========================================================
-       10. PREVENT DOUBLE SUBMIT FORM
-       ========================================================= */
     $("form").on("submit", function () {
         const $btn = $(this).find("[type=submit]");
         setTimeout(function () {
@@ -296,9 +267,6 @@ $(function () {
         }, 50);
     });
 
-    /* =========================================================
-       11. GLOBAL UTILITIES (RUPIAH, ESCAPE HTML, TOAST)
-       ========================================================= */
     window.rupiah = function (n) {
         return "Rp\u00a0" + parseInt(n || 0).toLocaleString("id-ID");
     };

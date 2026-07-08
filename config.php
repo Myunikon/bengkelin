@@ -13,8 +13,6 @@ define('DB_NAME', 'bengkel');
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-// Catatan: Jika aplikasi sudah di-hosting (Production),
-// ganti $conn->connect_error dengan pesan yang lebih umum untuk keamanan server.
 if ($conn->connect_error) {
     http_response_code(500);
     die('<p style="font-family:sans-serif;color:red;">Koneksi database gagal: ' . $conn->connect_error . '</p>');

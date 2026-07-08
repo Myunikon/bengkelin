@@ -7,6 +7,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 $error = $_GET['error'] ?? '';
+$remembered_username = $_COOKIE['remember_username'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -104,12 +105,13 @@ $error = $_GET['error'] ?? '';
                                name="username"
                                class="form-control py-2"
                                placeholder="Masukkan username Anda"
+                               value="<?php echo e($remembered_username); ?>"
                                required
-                               autofocus
+                               <?php echo empty($remembered_username) ? 'autofocus' : ''; ?>
                                autocomplete="username">
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="password" class="form-label small fw-semibold text-secondary">Password</label>
                         <input type="password"
                                id="password"
@@ -117,7 +119,15 @@ $error = $_GET['error'] ?? '';
                                class="form-control py-2"
                                placeholder="Masukkan password Anda"
                                required
+                               <?php echo !empty($remembered_username) ? 'autofocus' : ''; ?>
                                autocomplete="current-password">
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input shadow-none" id="remember" name="remember" value="1" <?php echo !empty($remembered_username) ? 'checked' : ''; ?>>
+                            <label class="form-check-label small text-secondary" for="remember">Ingat username saya</label>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 py-2 fw-medium rounded-3 shadow-sm">

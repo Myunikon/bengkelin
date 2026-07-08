@@ -29,7 +29,7 @@ include '../includes/sidebar.php';
 <?php endif; ?>
 
 <?php
-// 1. Definisikan susunan judul kolom tabel komponen
+
 $headers = [
     ['label' => 'No', 'width' => 60],
     ['label' => 'Nama Mekanik'],
@@ -37,7 +37,7 @@ $headers = [
     ['label' => 'Aksi', 'width' => 140, 'center' => true]
 ];
 
-// 2. Format baris data database ke format komponen
+
 $rows = [];
 $no = 1;
 while ($row = $result->fetch_assoc()) {
@@ -60,7 +60,7 @@ while ($row = $result->fetch_assoc()) {
 
 $emptyMessage = "Data mekanik belum terdaftar.";
 
-// 3. Panggil Engine Komponen Tabel
+
 include '../includes/components/table.php';
 ?>
 
