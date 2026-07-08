@@ -85,8 +85,8 @@ include '../includes/sidebar.php';
         <?php foreach ($validStatus as $st): ?>
             <?php $countValue = $counts[$st] ?? 0; ?>
             <a href="?status=<?= $st ?><?= $search ? '&search=' . urlencode($search) : '' ?>" class="btn btn-sm <?= $filterStatus === $st ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
-                <?= ucfirst($st) ?>
-                <span class="badge bg-<?= statusColor($st) ?> bg-opacity-20 text-<?= statusColor($st) ?> ms-1 border border-<?= statusColor($st) ?> border-opacity-50"><?= $countValue ?></span>
+                <?= statusLabel($st) ?>
+                <span class="badge badge-<?= $st ?> ms-1"><?= $countValue ?></span>
             </a>
         <?php endforeach; ?>
     </div>
