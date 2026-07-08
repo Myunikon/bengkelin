@@ -79,7 +79,7 @@ include '../includes/sidebar.php';
 
 <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
     <div class="d-flex flex-wrap gap-2">
-        <a href="?status=<?= urlencode($filterStatus) ?>" class="btn btn-sm <?= !$filterStatus ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
+        <a href="?status=<?= $search ? '&search=' . urlencode($search) : '' ?>" class="btn btn-sm <?= !$filterStatus ? 'btn-primary' : 'btn-light border' ?> rounded-pill px-3">
             Semua <span class="badge bg-secondary text-white ms-1"><?= array_sum($counts) ?></span>
         </a>
         <?php 
