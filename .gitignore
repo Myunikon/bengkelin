@@ -1,0 +1,18 @@
+# Ignore uploaded document photos but keep the directory tracked
+/assets/uploads/servis/*
+!/assets/uploads/servis/.gitkeep
+
+# Ignore IDE configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

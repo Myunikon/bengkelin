@@ -1,0 +1,419 @@
+/* ============================================================
+   BENGKEL MANAGEMENT - CLEAN & LIGHT THEME
+   ============================================================ */
+
+/* ── Font ────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: #ffffff; /* Latar belakang utama putih bersih */
+  color: #171717; /* Teks abu-abu kehitaman (lebih nyaman di mata) */
+}
+
+/* ── Variabel Warna & Ukuran ────────── */
+:root {
+  --bs-primary: #000000; /* Aksen utama hitam/gelap ala ChatGPT */
+  --bs-secondary: #f3f4f6;
+  --bs-success: #10b981;
+  --bs-danger: #ef4444;
+  --bs-warning: #f59e0b;
+  --bs-info: #3b82f6;
+
+  --sidebar-bg: #f9f9f9; /* Warna abu-abu sangat muda untuk sidebar */
+  --sidebar-hover: #ececec; /* Warna sorotan menu */
+  --border-light: #e5e7eb; /* Garis pemisah tipis */
+
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 68px;
+}
+
+/* ── Sidebar (Clean Light Mode) ─────────────────── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-light); /* Garis tegas, tanpa bayangan */
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+
+  /* Scrollbar estetik untuk sidebar terang */
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+/* Sidebar header */
+.sidebar-header {
+  height: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+  background: var(--sidebar-bg);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+}
+.sidebar-title {
+  color: #171717 !important; /* Timpa text-white dari Bootstrap */
+}
+.sidebar.collapsed .sidebar-header {
+  justify-content: center !important;
+}
+.sidebar.collapsed .sidebar-title {
+  display: none;
+}
+#sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+}
+#sidebar-toggle:hover {
+  background: var(--sidebar-hover);
+  color: #171717;
+}
+
+/* Nav link styling (Gaya Pil / Kapsul) */
+.sidebar .nav-link {
+  color: #4b5563 !important; /* Timpa text-white bawaan HTML */
+  padding: 0.6rem 1rem;
+  margin: 0.2rem 0;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.sidebar .nav-link:hover {
+  background: var(--sidebar-hover);
+  color: #171717 !important;
+}
+.sidebar .nav-link.active {
+  background: var(--sidebar-hover);
+  color: #171717 !important;
+  font-weight: 600;
+}
+.sidebar .nav-link i {
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+.sidebar .sidebar-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ca3af;
+  padding: 1rem 1.25rem 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sidebar .sidebar-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 0.5rem 1rem;
+}
+
+/* Penyesuaian saat sidebar ditutup */
+.sidebar.collapsed .nav-link {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0.2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar.collapsed .nav-link i {
+  margin-right: 0 !important;
+  font-size: 1.3rem;
+}
+.sidebar.collapsed .nav-link span {
+  display: none;
+}
+.sidebar.collapsed .sidebar-heading {
+  display: none;
+}
+
+/* ── Navbar ────────────────── */
+.navbar {
+  height: 64px;
+  margin-left: var(--sidebar-width);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: none !important;
+  background: #ffffff !important;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar.collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* ── Main Content ───────────────────────────────────────────── */
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  background: #ffffff;
+  min-height: 100vh;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.sidebar.collapsed + .main-content,
+#main-content.collapsed {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* ── Stat Card (Garis Tipis Minimalis) ──────────── */
+.stat-card {
+  border: 1px solid var(--border-light) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border-color: #d1d5db !important;
+}
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+/* Warna pastel untuk icon kotak */
+.stat-icon.blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+.stat-icon.green {
+  background: #f0fdf4;
+  color: #22c55e;
+}
+.stat-icon.amber {
+  background: #fffbeb;
+  color: #f59e0b;
+}
+.stat-icon.red {
+  background: #fef2f2;
+  color: #ef4444;
+}
+.stat-icon.purple {
+  background: #faf5ff;
+  color: #a855f7;
+}
+
+/* ── Badge Status Khusus ────────────────────────── */
+.badge-antre {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+.badge-dikerjakan {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+.badge-selesai {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+.badge-diambil {
+  background: #faf5ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+.badge-dibatalkan {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* ── Timeline (untuk riwayat servis) ───────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border-light);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.125rem;
+}
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  left: -36px;
+  top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+}
+
+/* ── Lightbox (custom overlay) ──────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-overlay .modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  background: transparent;
+  border: none;
+}
+.modal-overlay .modal-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* ── File input custom ── */
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+  background: #f8fafc;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #475569;
+  transition: all 0.2s;
+  width: 100%;
+  justify-content: center;
+}
+.file-label:hover,
+.file-label:focus-within {
+  border-color: #000000;
+  color: #000000;
+  background: #f1f5f9;
+}
+
+/* ── Photo Grid ──── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.625rem;
+  margin-top: 0.75rem;
+}
+.photo-item {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Responsive & Print ────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .navbar,
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+@media print {
+  .sidebar,
+  .navbar,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+  .card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ── Toast Message ──────────────────────────────────── */
+.toast-msg {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  z-index: 9999;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Gaya Desain Logo Sidebar ── */
+.sidebar-logo {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* Saat sidebar mengecil, beri sedikit spasi jika diperlukan */
+.sidebar.collapsed .sidebar-logo {
+  height: 28px;
+  width: 28px;
+}
