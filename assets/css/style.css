@@ -373,6 +373,9 @@ body {
   .main-content {
     margin-left: 0 !important;
   }
+  .main-content {
+    padding: 1rem !important; /* kurangi padding agar muat lebih banyak konten di HP */
+  }
 }
 
 @media print {
