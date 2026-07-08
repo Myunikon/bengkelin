@@ -75,6 +75,19 @@ $(function () {
         }
     });
 
+    // Toggle sidebar untuk tampilan Mobile
+    $('#mobile-sidebar-toggle').on('click', function (e) {
+        e.stopPropagation();
+        $('#sidebar').toggleClass('mobile-open');
+    });
+
+    // Sembunyikan sidebar mobile jika user mengklik area luar sidebar
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#sidebar, #mobile-sidebar-toggle').length) {
+            $('#sidebar').removeClass('mobile-open');
+        }
+    });
+
     /* =========================================================
        3. AUTO-DISMISS ALERTS
        ========================================================= */

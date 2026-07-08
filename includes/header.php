@@ -47,7 +47,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm">
     <div class="container-fluid px-3">
 
-        <!-- Brand dihapus total -->
+        <!-- Tombol Menu Mobile & Brand (hanya muncul di layar HP/Tablet) -->
+        <button id="mobile-sidebar-toggle" class="btn btn-light border btn-sm d-md-none me-2" title="Buka Menu">
+            <i class="bx bx-menu fs-4"></i>
+        </button>
+        <span class="fw-semibold d-md-none fs-6 text-dark mb-0">Bengkelin</span>
 
         <!-- Bagian kanan (user info, logout) -->
         <div class="d-flex align-items-center gap-2 ms-auto">
